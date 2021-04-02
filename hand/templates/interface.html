@@ -1,10 +1,54 @@
-{% extends "home.html" %} {% block content %} 
+{% extends "home.html" %} {% block content %}
 
 <div id="app">
-    
+  <div id="translationBox">
+    <div id="translatedPhrase" class="z-depth-1">
+      <p>translatedPhrase</p>
+    </div>
 
+    <div id="historial" class="z-depth-1">
+      <p>historial</p>
+    </div>
+
+    <div id="buttons">
+      <a class="btn-floating btn-large waves-effect waves-light pink accent-3"
+        ><i class="material-icons"
+          ><span class="material-icons"> delete </span></i
+        ></a
+      >
+      <a href=""></a>
+      <a class="btn-floating btn-large waves-effect waves-light cyan"
+        ><i class="material-icons"
+          ><span class="material-icons"> play_arrow </span></i
+        ></a
+      >
+    </div>
+  </div>
+
+  <div id="previewBox">
+    <div id="preview" class="z-depth-1">
+        <p>A</p>
+    </div>
+    <div id="controls" class="z-depth-1">
+      <small>
+        <span class="material-icons"> schedule </span> <br />
+        Standby time
+      </small>
+      <form action="#">
+        <p id="timeSlider" class="range-field">
+          <input
+            onmousemove="updateSlider(this.value)"
+            onclick="updateSlider(this.value)"
+            type="range"
+            id="test5"
+            min="0"
+            max="200"
+          />
+        </p>
+        <label id="timeSliderLabel" for="timeSlider">100 ms</label>
+      </form>
+    </div>
+  </div>
 </div>
-
-
 
 {% endblock %}

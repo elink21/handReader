@@ -1,11 +1,154 @@
-#app {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@font-face {
+  font-family: "signLanguage";
+  src: local("signLanguage"), url("../fonts/signLanguage.otf") format("truetype");
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+  color: lightslategrey;
+}
+
+i span {
+  color: white !important;
+}
+
+body {
   height: 100vh;
   width: 100vw;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 8fr 1fr;
       grid-template-columns: 1fr 8fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas: "... app ...";
+}
+
+#app {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: app;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5fr 2fr;
+      grid-template-columns: 5fr 2fr;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 30px;
+}
+
+#translationBox {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 2fr 1fr 1fr;
+      grid-template-rows: 2fr 1fr 1fr;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#translationBox div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#translationBox #translatedPhrase {
+  border: 1px solid rgba(119, 136, 153, 0.384);
+  border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+#translationBox #translatedPhrase p {
+  font-size: 30px;
+}
+
+#translationBox #historial {
+  height: 60%;
+  width: 100%;
+  border-radius: 30px 30px;
+  text-align: center;
+}
+
+#translationBox #historial p {
+  margin-top: 0px;
+  font-size: 61px;
+  font-family: "signLanguage" !important;
+}
+
+#translationBox #buttons {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+#previewBox {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 2fr 1fr 1fr;
+      grid-template-rows: 2fr 1fr 1fr;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#previewBox div {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#previewBox #preview,
+#previewBox #controls {
+  width: 100%;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+}
+
+#previewBox #controls {
+  height: 60%;
+  border-radius: 30px 30px;
+  text-align: center;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+#previewBox #preview {
+  height: 100%;
+  border: 1px solid rgba(119, 136, 153, 0.384);
+  border-radius: 20px;
+}
+
+#previewBox #preview p {
+  margin: 0px;
+  font-size: 150px;
+  font-family: "signLanguage" !important;
 }
 /*# sourceMappingURL=styles.css.map */
