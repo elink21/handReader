@@ -127,6 +127,8 @@ body {
 #previewBox #preview,
 #previewBox #controls {
   width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
 }
@@ -144,11 +146,21 @@ body {
   height: 100%;
   border: 1px solid rgba(119, 136, 153, 0.384);
   border-radius: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 4fr 1fr;
+      grid-template-rows: 4fr 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
 }
 
 #previewBox #preview p {
   margin: 0px;
   font-size: 150px;
   font-family: "signLanguage" !important;
+}
+
+#previewBox #preview div {
+  width: 80%;
 }
 /*# sourceMappingURL=styles.css.map */

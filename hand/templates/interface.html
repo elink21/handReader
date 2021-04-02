@@ -17,9 +17,12 @@
         ></a
       >
       <a href=""></a>
-      <a class="btn-floating btn-large waves-effect waves-light cyan"
+      <a
+      id="playButton"
+        onclick="toggleAnimations()"
+        class="btn-floating btn-large waves-effect waves-light cyan"
         ><i class="material-icons"
-          ><span class="material-icons"> play_arrow </span></i
+          ><span class="material-icons" id="playIcon"> play_arrow </span></i
         ></a
       >
     </div>
@@ -27,7 +30,15 @@
 
   <div id="previewBox">
     <div id="preview" class="z-depth-1">
-        <p>A</p>
+      <p>A</p>
+      <div id="timerSection">
+        <small>
+          <span class="material-icons" id="hourglass"> hourglass_bottom </span>
+        </small>
+        <div class="progress">
+          <div class="determinate" id="progressBar" style="width: 100%"></div>
+        </div>
+      </div>
     </div>
     <div id="controls" class="z-depth-1">
       <small>
@@ -40,12 +51,12 @@
             onmousemove="updateSlider(this.value)"
             onclick="updateSlider(this.value)"
             type="range"
-            id="test5"
-            min="0"
-            max="200"
+            id="standbyTime"
+            min="2"
+            max="8"
           />
         </p>
-        <label id="timeSliderLabel" for="timeSlider">100 ms</label>
+        <label id="timeSliderLabel" for="timeSlider">5 s</label>
       </form>
     </div>
   </div>
