@@ -1,6 +1,6 @@
 let standbyTimeSlider = document.querySelector("#timeSlider");
 let standbyTimeLabel = document.querySelector("#timeSliderLabel");
-let tween;
+let tl = gsap.timeline();
 let hourGlassAnimation;
 
 let isPlaying = false;
@@ -15,6 +15,7 @@ const toggleAnimations = () => {
 }
 
 const startAnimations = () => {
+
 
     if (isPlaying) return;
 
@@ -37,20 +38,26 @@ const startAnimations = () => {
             duration: standByTime,
             rotateZ: 360,
             repeat: -1,
-            ease: `slow`
+            ease: `slow`,
         }
     );
 
+    tl = gsap.timeline();
 
-    tween = gsap.to(progressBar,
+    tl.to(progressBar,
         {
             startAt: {
                 width: "100%"
             },
             duration: standByTime,
             width: 0,
-            repeat: -1,
-            ease: `steps(${standByTime})`
+            delay: 1,
+            ease: `steps(${standByTime})`,
+            onComplete: function () {
+                tl.restart();
+                console.log("finished!");
+                requestSample(true);
+            }
         });
 
     /*loop = setInterval(() => {
@@ -58,9 +65,36 @@ const startAnimations = () => {
     }, 5000);*/
 }
 
+const updateUI = (letter) => {
+    let historial = document.querySelector("#historialParagraph");
+    let translated = document.querySelector("#translatedParagraph");
+    let preview = document.querySelector("#previewParagraph");
+
+    gsap.fromTo([historial, translated, preview],
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 1, ease: 'power1.inOut' });
+
+    historial.innerHTML += letter;
+    translated.innerHTML += letter;
+    preview.innerHTML = letter;
+
+
+}
+
+const restartUI = () => {
+    let historial = document.querySelector("#historialParagraph");
+    let translated = document.querySelector("#translatedParagraph");
+    let preview = document.querySelector("#previewParagraph");
+
+    historial.innerHTML = "";
+    translated.innerHTML = "";
+    preview.innerHTML = "";
+}
+
 const stopAnimations = () => {
     isPlaying = false;
-    tween.kill();
+    tl.restart();
+    tl.pause();
     hourGlassAnimation.kill();
     document.querySelector("#playIcon").innerHTML = "play_arrow";
     document.querySelector("#playButton").classList.add("cyan");

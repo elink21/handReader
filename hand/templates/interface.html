@@ -3,22 +3,24 @@
 <div id="app">
   <div id="translationBox">
     <div id="translatedPhrase" class="z-depth-1">
-      <p>translatedPhrase</p>
+      <p id="translatedParagraph">translatedPhrase</p>
     </div>
 
     <div id="historial" class="z-depth-1">
-      <p>historial</p>
+      <p id="historialParagraph">historial</p>
     </div>
 
     <div id="buttons">
-      <a class="btn-floating btn-large waves-effect waves-light pink accent-3"
+      <a
+        onclick=""
+        class="btn-floating btn-large waves-effect waves-light pink accent-3"
         ><i class="material-icons"
           ><span class="material-icons"> delete </span></i
         ></a
       >
       <a href=""></a>
       <a
-      id="playButton"
+        id="playButton"
         onclick="toggleAnimations()"
         class="btn-floating btn-large waves-effect waves-light cyan"
         ><i class="material-icons"
@@ -30,7 +32,7 @@
 
   <div id="previewBox">
     <div id="preview" class="z-depth-1">
-      <p>K</p>
+      <p id="previewParagraph">K</p>
       <div id="timerSection">
         <small>
           <span class="material-icons" id="hourglass"> hourglass_bottom </span>

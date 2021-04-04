@@ -8,6 +8,12 @@
 
     <link rel="stylesheet" href="{% static 'css/styles.css'%}" />
 
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+
     <!-- Compiled and minified CSS -->
     <link
       rel="stylesheet"
@@ -24,12 +30,12 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
 
-
     <title>Document</title>
   </head>
   <body>
     {% block content %} {% endblock %}
 
     <script src="{%static 'js/uiHandler.js'%}"></script>
+    <script src="{%static 'js/ajaxHandler.js'%}"></script>
   </body>
 </html>
