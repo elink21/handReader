@@ -15,6 +15,9 @@ def home(request):
 
 def requestSample(request):
     glove.requestSample()
-    letter = glove.readSample()
-    print(letter)
-    return JsonResponse({'letter':letter.decode("utf-8")[0]})
+    sample = glove.readSample()
+    sample = [int(s) for s in sample.split(" ")]
+    print(sample)
+    letter = glove.decodeSample(sample)
+
+    return JsonResponse({'letter': letter})
