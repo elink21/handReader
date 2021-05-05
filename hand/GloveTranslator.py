@@ -6,10 +6,9 @@ class GloveTranslator:
 
     def __init__(self, port, baudrate) -> None:
         self.glove = serial.Serial(port, baudrate)
-        self.reads = []
 
-        self.middleRange = 200
-        self.lowRange = 100
+        self.middleRange = 260
+        self.lowRange = 180
 
         # fingers are represented from pinky to thumb
         self.letters = {
@@ -18,13 +17,13 @@ class GloveTranslator:
             # ['middle', 'middle', 'middle', 'middle', 'middle']: 'C',
             '22222': 'C',
             # ['middle', 'middle', 'middle', 'high', 'middle']: 'D',
-            '22232': 'D',
+            '11131': 'D',
             '11111': 'E',  # ['low', 'low', 'low', 'low', 'low']: 'E',
             '33322': 'F',  # ['high', 'high', 'high', 'middle', 'middle']: 'F',
             '11133': 'G',  # ['low', 'low', 'low', 'high', 'high']: 'G',
             '11332': 'H',  # ['low', 'low', 'high', 'high', 'middle']: 'H',
             '31111': 'I',  # ['high', 'low', 'low', 'low', 'low']: 'I',
-            '11333': 'K',  # ['low', 'low', 'high', 'high', 'high']: 'K',
+            '11333': 'L',  # ['low', 'low', 'high', 'high', 'high']: 'K',
         }
 
     def mapSignal(self, n):
@@ -32,6 +31,10 @@ class GloveTranslator:
 
     def close(self):
         self.glove.close()
+
+    def writeToScreen(self, msg: str):
+        self.glove.write(msg.encode())
+        pass
 
     def requestSample(self):
         self.glove.write(b"request")
@@ -41,7 +44,7 @@ class GloveTranslator:
         translatedSample = ""
         for s in sample:
             translatedSample += self.mapSignal(s)
-        return self.letters[translatedSample]
+        return self.letters[translatedSample[::-1]]
 
     def readSample(self):
-        return self.glove.readline().decode('UTF-8  ')
+        return self.glove.readline().decode('UTF-8')
